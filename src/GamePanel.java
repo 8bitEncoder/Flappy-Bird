@@ -13,12 +13,14 @@ public class GamePanel extends JPanel implements ActionListener {
     //Data members
     private Image bg;
     private Bird bird;
+    private Pipe pipe;
     private Timer timer;
 
     //Constructor
     public GamePanel() {
         bg = new ImageIcon(getClass().getResource("/assets/img/flappybirdbg.png")).getImage();
         bird = new Bird(new ImageIcon(getClass().getResource("/assets/img/flappybird.png")).getImage());
+        pipe = new Pipe(new ImageIcon(getClass().getResource("/assets/img/bottomPipe.png")).getImage());
         timer = new Timer(16, this); // ~60 FPS
         timer.start();
     }
@@ -26,12 +28,18 @@ public class GamePanel extends JPanel implements ActionListener {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.drawImage(bg, 0, 0, null);
+        pipe.draw(g);
         bird.draw(g);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         bird.update();
+        pipe.move();
+        if (pipe.isOffScreen()) {
+            System.out.println("pipe is off screen");
+            pipe.reset();
+        }
         repaint();
     }
 }                       
