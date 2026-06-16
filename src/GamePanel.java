@@ -18,9 +18,10 @@ public class GamePanel extends JPanel implements KeyListener {
 
     //Constructor
     public GamePanel() {
-        bg = new ImageIcon(getClass().getResource("/assets/img/flappybirdbg.png")).getImage();
-        bird = new Bird(new ImageIcon(getClass().getResource("/assets/img/flappybird.png")).getImage());
-        pipe = new Pipe(new ImageIcon(getClass().getResource("/assets/img/bottomPipe.png")).getImage());
+        
+        bg = new ImageIcon(getClass().getResource("/src/assets/img/flappybirdbg.png")).getImage();
+        bird = new Bird(new ImageIcon(getClass().getResource("/src/assets/img/flappybird.png")).getImage());
+        pipe = new Pipe(new ImageIcon(getClass().getResource("/src/assets/img/bottompipe.png")).getImage());
         setFocusable(true);
         addKeyListener(this);
         timer = new Timer(16, e -> {
