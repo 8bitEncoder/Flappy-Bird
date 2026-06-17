@@ -15,11 +15,11 @@ public class Pipe {
 
     private Image img;
 
-    public Pipe(Image img) {
+    public Pipe(Image img, int x, int y) {
         this.img = img;
         // initialization is internal
-        this.x = 400;
-        this.y = 200;
+        this.x = x;
+        this.y = y;
     }
 
     public void draw(Graphics g) {
@@ -34,7 +34,7 @@ public class Pipe {
         return x + WIDTH < 0;
     }
 
-    public void reset() {
-        x = 500;
+    public void reset(int newX) {
+        x = newX;
     }
 }
